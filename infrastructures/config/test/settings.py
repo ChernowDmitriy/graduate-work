@@ -1,3 +1,4 @@
+import os
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -8,7 +9,7 @@ load_dotenv(dotenv_path=Path('.env'))
 
 
 class TestSettings(BaseSettings):
-    pass
+    SYNC_POSTGRES_URL: str = os.getenv('SYNC_POSTGRES_URL', os.getenv('SYNC_POSTGRES_URL').replace('+asyncpg', ''))
 
 
 def get_settings() -> TestSettings:
