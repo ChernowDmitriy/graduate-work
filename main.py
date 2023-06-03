@@ -1,9 +1,7 @@
 from fastapi import FastAPI
-from starlette.middleware.authentication import AuthenticationMiddleware
 from starlette.middleware.cors import CORSMiddleware
 
 from api import router as api_router
-from infrastructures.authentication import BasicAuthBackend
 from infrastructures.database import BaseModel, engine
 
 app = FastAPI()
