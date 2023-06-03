@@ -1,7 +1,9 @@
 from datetime import datetime, timedelta
 
-from fastapi import APIRouter, Depends
+from fastapi import APIRouter, Depends, Request
+from starlette.authentication import requires
 
+from core.const import PROTECTED
 from core.domains.DTO.token import Token
 from core.domains.DTO.user import AuthUserSchemaInput, CreateUserSchemaInput
 from core.exceptions import InvalidCredentials

@@ -1,3 +1,4 @@
+import uuid
 from typing import Union
 
 from core.domains import User as UserModel
@@ -14,4 +15,8 @@ class UserService:
 
     async def get_user_by_email(self, email: str) -> Union[UserModel, None]:
         result = await self._user_rep.get({'email': email})
+        return result
+
+    async def get_user_by_id(self, user_id: Union[str, uuid.UUID]) -> Union[UserModel, None]:
+        result = await self._user_rep.get({'id': str(user_id)})
         return result
