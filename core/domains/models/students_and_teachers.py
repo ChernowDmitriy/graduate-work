@@ -12,8 +12,8 @@ class Student(ORMBaseModel):
     user = relationship('User', backref='Student')
 
 
-class Teacher(ORMBaseModel):
-    __tablename__ = 'teachers'
+class Author(ORMBaseModel):
+    __tablename__ = 'authors'
 
-    user_id = sa.Column(UUID(as_uuid=True), sa.ForeignKey('users.id'))
-    user = relationship('User', backref='Teacher')
+    user_id = sa.Column(UUID(as_uuid=True), sa.ForeignKey('users.id', ondelete='CASCADE'), nullable=False)
+    user = relationship('User', backref='Author')
